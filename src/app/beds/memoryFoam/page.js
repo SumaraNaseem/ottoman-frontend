@@ -28,7 +28,7 @@ const MemoryFoam = () => {
     useEffect(() => {
         const fetchMattresses = async () => {
             try {
-                const response = await axios.get('https://ottomonapis.vercel.app/beds');
+                const response = await axios.get('https://ottomonukbackup1.vercel.app/beds');
                 console.log('API Response:', response.data);
                 setSelected(response.data);
             } catch (error) {

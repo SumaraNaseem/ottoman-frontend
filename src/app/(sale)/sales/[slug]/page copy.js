@@ -315,7 +315,7 @@ const Products = ({params}) => {
 const parts=params.slug.split('D')
 console.log(parts,'parts')
 setPId(parts[1])
-          const response = await axios.get(`https://ottomonapis.vercel.app/mattresses/${parts[1]}`);
+          const response = await axios.get(`https://ottomonukbackup1.vercel.app/mattresses/${parts[1]}`);
           console.log('Fetched data:', response.data.mattresses.price);
           setMattresses(response.data.mattresses); // Ensure you set the correct response data
           setAmount(`$${response.data.mattresses.price}`); // Set the fetched price
@@ -337,7 +337,7 @@ setPId(parts[1])
   //   setLoading(true);
   //   const fetchMattresses = async () => {
   //     try {
-  //       const response = await axios.get("https://ottomonapis.vercel.app/mattresses/id");
+  //       const response = await axios.get("https://ottomonukbackup1.vercel.app/mattresses/id");
   //       setLoading(false);
   //       setMattresses(res.data.mattressesData);
   //     } catch (error) {

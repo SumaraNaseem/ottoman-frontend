@@ -30,7 +30,7 @@ const CutBedMattresses = () => {
   useEffect(() => {
     const fetchMattresses = async () => {
       try {
-        const response = await axios.get('https://ottomonapis.vercel.app/mattresses');
+        const response = await axios.get('https://ottomonukbackup1.vercel.app/mattresses');
         console.log('API Response:', response.data);
         setMattresses(response.data);
       } catch (error) {

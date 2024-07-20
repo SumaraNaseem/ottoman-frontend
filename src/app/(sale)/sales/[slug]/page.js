@@ -7,6 +7,7 @@ import SlipLids from "../../../../components/cards/SlipLids";
 import ColorPalette from "../../../../components/cards/ColorPalette";
 import "../../../../css/styles.css";
 import { useRouter } from 'next/navigation';
+import RightSidebar from '../../../../components/RightSidebar/RightSidebar';
 import ProductbaseDropdown from "../../../../components/ProductbaseDropdown";
 // import DetailsMobile from "../../../../components/cards/_components/details_mobile";
 import { Check, Minus, Plus } from "lucide-react";
@@ -19,7 +20,11 @@ const Products = ({params}) => {
   const buttonStyles = [{ padding: "0.25rem" }, { padding: "0.25rem" }];
   const router = useRouter();
   console.log(params.slug,'_________1'); 
- 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const toggleSidebar = () => {
+    console.log("hlo toggle sidebar are u there ")
+    setIsSidebarOpen(!isSidebarOpen);
+  };
   
  
 
@@ -316,7 +321,7 @@ const Products = ({params}) => {
 const parts=params.slug.split('D')
 console.log(parts,'parts')
 setPId(parts[1])
-          const response = await axios.get(`https://ottomonapis.vercel.app/sales/${params.slug}`);
+          const response = await axios.get(`https://ottomonukbackup1.vercel.app/sales/${params.slug}`);
           console.log('Fetched data:', response.data.sales.price);
           setsales(response.data.sales); // Ensure you set the correct response data
           setAmount(`$${response.data.sales.price}`); // Set the fetched price
@@ -339,7 +344,7 @@ setPId(parts[1])
   //   setLoading(true);
   //   const fetchsales = async () => {
   //     try {
-  //       const response = await axios.get("https://ottomonapis.vercel.app/sales/id");
+  //       const response = await axios.get("https://ottomonukbackup1.vercel.app/sales/id");
   //       setLoading(false);
   //       setsales(res.data.salesData);
   //     } catch (error) {
@@ -1006,11 +1011,10 @@ setPId(parts[1])
                       className={`bg-[#00acbb] w-[30%] hover:bg-[#00666e] text-sm text-white font-bold py-[0.6rem] px-8 rounded-2xl max-sm:py-[0.3rem] ${
                         shake ? "animate__animated animate__shakeX" : ""
                       }`}
-                      onClick={() => 
-                           dispatch(addToCart(PId))}
-                       
-                    >
-                      Add to Cart
+                      onClick={() => {
+                        dispatch(addToCart(PId));
+                        toggleSidebar();
+                      }}>Add to Cart
                     </button>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -1184,9 +1188,10 @@ setPId(parts[1])
                         className={`bg-[#00acbb] w-[60%] h-12 hover:bg-[#00666e] text-sm text-white font-bold py-[0.5rem] px-5 rounded-2xl max-sm:py-[0.3rem] ${
                           shake ? "animate__animated animate__shakeX" : ""
                         }`}
-                        onClick={() => 
-                          dispatch(addToCart(PId))}                      >
-                        Add to Cart
+                        onClick={() => {
+                          dispatch(addToCart(PId));
+                          toggleSidebar();
+                        }}>Add to Cart
                       </button>
                     </div>
                   </div>
@@ -1200,7 +1205,7 @@ setPId(parts[1])
       </div>
 
       {/* Details Mobile */}
-      
+      <RightSidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
       {/* <DetailsMobile /> */}
     </div>
   );

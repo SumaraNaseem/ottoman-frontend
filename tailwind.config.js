@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        'custom-lightblue': '2px -3px 4px 2px #00ACBB',
+      },
       colors:{
       'primary':'#00acbb',
       animation: {
@@ -14,6 +17,7 @@ module.exports = {
           '0%': { opacity: 0 },
           '100%': { opacity: 1 },
         },
+
       },
     },
       backgroundImage: {
@@ -24,6 +28,7 @@ module.exports = {
         spacing: {
         '11': '2.75rem',
       }
+     
       
 
     },

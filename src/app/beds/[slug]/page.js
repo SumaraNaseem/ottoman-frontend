@@ -6,6 +6,7 @@ import Image from "next/image";
 import SlipLids from "../../../components/cards/SlipLids";
 import ColorPalette from "../../../components/cards/ColorPalette";
 import "../../../css/styles.css";
+import RightSidebar from '../../../components/RightSidebar/RightSidebar';
 import { useRouter } from 'next/navigation';
 import ProductbaseDropdown from "../../../components/ProductbaseDropdown";
 // import DetailsMobile from "../../../components/cards/_components/details_mobile";
@@ -19,8 +20,11 @@ const Products = ({params}) => {
   const buttonStyles = [{ padding: "0.25rem" }, { padding: "0.25rem" }];
   const router = useRouter();
   console.log(params.slug,'_________1'); 
- 
-  
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const toggleSidebar = () => {
+    console.log("hlo toggle sidebar are u there ")
+    setIsSidebarOpen(!isSidebarOpen);
+  };
  
 
   
@@ -316,7 +320,7 @@ const Products = ({params}) => {
 const parts=params.slug.split('D')
 console.log(parts,'parts')
 setPId(parts[1])
-          const response = await axios.get(`https://ottomonapis.vercel.app/beds/${params.slug}`);
+          const response = await axios.get(`https://ottomonukbackup1.vercel.app/beds/${params.slug}`);
           console.log('Fetched data:', response.data.beds.price);
           setbeds(response.data.beds); // Ensure you set the correct response data
           setAmount(`$${response.data.beds.price}`); // Set the fetched price
@@ -339,7 +343,7 @@ setPId(parts[1])
   //   setLoading(true);
   //   const fetchbeds = async () => {
   //     try {
-  //       const response = await axios.get("https://ottomonapis.vercel.app/beds/id");
+  //       const response = await axios.get("https://ottomonukbackup1.vercel.app/beds/id");
   //       setLoading(false);
   //       setbeds(res.data.bedsData);
   //     } catch (error) {
@@ -1006,8 +1010,10 @@ setPId(parts[1])
                       className={`bg-[#00acbb] w-[30%] hover:bg-[#00666e] text-sm text-white font-bold py-[0.6rem] px-8 rounded-2xl max-sm:py-[0.3rem] ${
                         shake ? "animate__animated animate__shakeX" : ""
                       }`}
-                      onClick={() => 
-                           dispatch(addToCart(PId))}
+                      onClick={() => {
+                        dispatch(addToCart(PId));
+                        toggleSidebar();
+                      }}
                        
                     >
                       Add to Cart
@@ -1184,8 +1190,10 @@ setPId(parts[1])
                         className={`bg-[#00acbb] w-[60%] h-12 hover:bg-[#00666e] text-sm text-white font-bold py-[0.5rem] px-5 rounded-2xl max-sm:py-[0.3rem] ${
                           shake ? "animate__animated animate__shakeX" : ""
                         }`}
-                        onClick={() => 
-                          dispatch(addToCart(PId))}                      >
+                        onClick={() => {
+                          dispatch(addToCart(PId));
+                          toggleSidebar();
+                        }}                     >
                         Add to Cart
                       </button>
                     </div>
@@ -1200,7 +1208,7 @@ setPId(parts[1])
       </div>
 
       {/* Details Mobile */}
-      
+      <RightSidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
       {/* <DetailsMobile /> */}
     </div>
   );

@@ -42,7 +42,7 @@ const ProductCardAccessories = ({item, name, price, image, hoverImage, discount,
         setLoading(true)
         const fetchMattresses = async () => {
           try {
-            const response = await axios.get("https://ottomonapis.vercel.app/accessories");
+            const response = await axios.get("https://ottomonukbackup1.vercel.app/accessories");
             console.log("API Response:___", response.data);
             setLoading(false)
             const filters = {
@@ -133,12 +133,12 @@ const ProductCardAccessories = ({item, name, price, image, hoverImage, discount,
                       </del>
                       <p className="text-sm cursor-auto text-red-600">{item.price}</p>
                     </>
-                    <button className="add-to-cart bg-primary text-white m-2 btn btn-default"
+                    {/* <button className="add-to-cart bg-primary text-white m-2 btn btn-default"
                       style={{ cursor: 'pointer' }}
                       onClick={() => {
                         dispatch(addToCart(item.id));
                       }}
-                      type="button">add to cart</button>
+                      type="button">add to cart</button> */}
                   </div>
   
                 </div>
@@ -196,11 +196,11 @@ const ProductCardAccessories = ({item, name, price, image, hoverImage, discount,
   
                 </div>
   
-                <button className="add-to-cart bg-primary text-white btn btn-default"
+                {/* <button className="add-to-cart bg-primary text-white btn btn-default"
                   onClick={() => {
                     dispatch(addToCart(item.id));
                   }}
-                  type="button">add to cart</button>
+                  type="button">add to cart</button> */}
               </div>
             </div>
           )

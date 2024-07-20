@@ -23,7 +23,7 @@ const ProductCardMatress = ({ item, selectedGrid, pageType, CallingFrom }) => {
     setLoading(true);
     const fetchMattresses = async () => {
       try {
-        const response = await axios.get("https://ottomonapis.vercel.app/mattresses");
+        const response = await axios.get("https://ottomonukbackup1.vercel.app/mattresses");
         setLoading(false);
 
         const filters = {
@@ -143,12 +143,12 @@ const ProductCardMatress = ({ item, selectedGrid, pageType, CallingFrom }) => {
                     </del>
                     <p className="text-sm cursor-auto text-red-600">{item.price}</p>
                   </>
-                  <button className="m-3 add-to-cart bg-primary  text-white btn btn-default"
+                  {/* <button className="m-3 add-to-cart bg-primary  text-white btn btn-default"
                     style={{ cursor: 'pointer', }}
                     onClick={() => {
                       dispatch(addToCart(item.id));
                     }}
-                    type="button">add to cart</button>
+                    type="button">add to cart</button> */}
                 </div>
 
               </div>
@@ -210,13 +210,13 @@ const ProductCardMatress = ({ item, selectedGrid, pageType, CallingFrom }) => {
                 </>
 
               </div>
-              {CallingFrom !== undefined ? (<button className="bg-primary text-white  add-to-cart btn btn-default"
+              {/* {CallingFrom !== undefined ? (<button className="bg-primary text-white  add-to-cart btn btn-default"
                 onClick={() => {
                   dispatch(addToCart(item.id));
                 }}
                 type="button">add to cart</button>) : (" "
 
-              )}
+              )} */}
 
             </div>
           </div>

@@ -70,8 +70,8 @@ const PaymentForm  = () => {
         throw new Error(error.message);
       }
 
-      // Send payment method to backendhttps://ottomonapis.vercel.app/payment
-      const response = await axios.post(`https://ottomonapis.vercel.app/payment`, {
+      // Send payment method to backendhttps://ottomonukbackup1.vercel.app/payment
+      const response = await axios.post(`https://ottomonukbackup1.vercel.app/payment`, {
         paymentMethodId: paymentMethod.id,
         amount: formData.amount, // Convert amount to cents
         currency: 'usd', // specify the currency
